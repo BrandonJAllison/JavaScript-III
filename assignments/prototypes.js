@@ -70,21 +70,32 @@ Humanoid.prototype.greet = function() {
   
 };
 
+//Hero
 function Hero(heroAttributes) {
   Humanoid.call(this, heroAttributes); 
   this.isHero = heroAttributes.isHuman; 
- 
+  this.battleCry = heroAttributes.battleCry;
+  
 }
 
 Hero.prototype = Object.create(Humanoid.prototype);
+Hero.prototype.goToBattle = function() {
+  
+  return(`${this.name} runs into battle screaming: ${this.battleCry}`);
 
+};
+
+//Villian
 function Villian(villianAttributes) {
   Humanoid.call(this, villianAttributes); 
-  this.isVillians = villianAttributes.isVillian; 
- 
+  this.isVillian = villianAttributes.isVillian; 
+  Hero.call(this, villianAttributes); 
+  this.isVillian = villianAttributes.isVillian; 
+  this.battleCry = villianAttributes.battleCry;
 }
 
-Hero.prototype = Object.create(Humanoid.prototype);
+Villian.prototype = Object.create(Humanoid.prototype);
+Villian.prototype = Object.create(Hero.prototype);
 
 
 
@@ -156,14 +167,15 @@ Hero.prototype = Object.create(Humanoid.prototype);
       width: 4,
       height: 6,
     },
-    healthPoints: 20,
-    name: 'Ethan Winter',
+    healthPoints: 200,
+    name: 'Lambda Students',
     team: 'The Round Table',
     weapons: [
       'Battle Axe',
       'Cross Bow',
     ],
     language: 'Common Tongue',
+    battleCry:"AHHHHHHHHHHHHHHH"
   });
 
   const evilVillian = new Villian({
@@ -173,15 +185,43 @@ Hero.prototype = Object.create(Humanoid.prototype);
       width: 4,
       height: 6,
     },
-    healthPoints: 20,
+    healthPoints: 200,
     name: 'AirTable',
-    team: 'The Round Table',
+    team: 'Daily Standups',
     weapons: [
       'Potions',
       'Wand',
     ],
     language: 'Evil Laugh',
+    battleCry: "Error Loading Airtable"
   });
+
+ 
+      
+
+  
+
+
+
+//Number Generator
+const numberGen = {
+  sides: 10,
+  roll: function () {
+    let randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+};
+  
+    
+  
+
+  
+   
+   
+   
+    
+  
+    
 
   console.log(mage.createdAt); // Today's date
   console.log(archer.dimensions); // { length: 1, width: 2, height: 4 }
@@ -193,6 +233,10 @@ Hero.prototype = Object.create(Humanoid.prototype);
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
+  console.log(numberGen.roll());//generates a random number for battle 
+  console.log(strongHero.goToBattle());
+  console.log(evilVillian.goToBattle());
+  
   
 
 

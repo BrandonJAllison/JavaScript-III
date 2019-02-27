@@ -22,9 +22,9 @@ console.log (this);
 // code example for Implicit Binding
 
 const myObj ={
-    greeting: 'hello',
+    greeting: 'Hey',
     speak: function(){
-        return `${this.greeting}, world!`
+        return `${this.greeting}, you guys!`
     }
 };
 
@@ -37,7 +37,7 @@ myObj.speak();
 
 function Person(obj){
     this.name = obj.name;
-    this.age = obj.ages;
+    this.age = obj.age;
     this.speak = function(){
         return `Hello, my name is ${this.name}, and I am ${this.age} years old!`
     }
@@ -55,7 +55,7 @@ brandon.speak();
 
 function Person(obj){
     this.name = obj.name;
-    this.age = obj.ages;
+    this.age = obj.age;
     this.speak = function(){
         return `Hello, my name is ${this.name}, and I am ${this.age} years old!`
     }
