@@ -50,9 +50,7 @@ CharacterStats.prototype.takeDamage = function() {
   * should inherit destroy() from GameObject through CharacterStats
   * should inherit takeDamage() from CharacterStats
 */
-function Humanoid(humanoidAttributes) {
-  GameObjects.call(this, humanoidAttributes); 
-  this.isCharacterStats = humanoidAttributes.isHumanoid; 
+function Humanoid(humanoidAttributes) { 
   CharacterStats.call(this, humanoidAttributes); 
   this.isCharacterStats = humanoidAttributes.isHumanoid;
   this.healthPoints = humanoidAttributes.healthPoints;
@@ -60,8 +58,6 @@ function Humanoid(humanoidAttributes) {
   this.weapons = humanoidAttributes.weapons;
   this.language = humanoidAttributes.language;
 }
-
-Humanoid.prototype = Object.create(GameObjects.prototype);
 Humanoid.prototype = Object.create(CharacterStats.prototype);
 
 Humanoid.prototype.greet = function() {
@@ -86,15 +82,13 @@ Hero.prototype.goToBattle = function() {
 };
 
 //Villian
-function Villian(villianAttributes) {
-  Humanoid.call(this, villianAttributes); 
-  this.isVillian = villianAttributes.isVillian; 
+function Villian(villianAttributes) { 
   Hero.call(this, villianAttributes); 
   this.isVillian = villianAttributes.isVillian; 
   this.battleCry = villianAttributes.battleCry;
 }
 
-Villian.prototype = Object.create(Humanoid.prototype);
+
 Villian.prototype = Object.create(Hero.prototype);
 
 
