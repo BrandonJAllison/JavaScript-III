@@ -79,7 +79,22 @@ Hero.prototype.goToBattle = function() {
   
   return(`${this.name} runs into battle screaming: ${this.battleCry}`);
 
+
 };
+
+Hero.prototype.battleSwing = function() {
+  
+ const numberGen = {
+  sides: 10,
+  roll: function () {
+    let randomNumber = Math.floor(Math.random() * this.sides) + 1;
+    return randomNumber;
+  }
+};
+  
+return(`${this.name} swung their ${this.weapons[0]} dealing ${numberGen.roll()} damage!`);
+};
+
 
 //Villian
 function Villian(villianAttributes) { 
@@ -162,7 +177,7 @@ Villian.prototype = Object.create(Hero.prototype);
       height: 6,
     },
     healthPoints: 200,
-    name: 'Lambda Students',
+    name: 'Lambda Student',
     team: 'The Round Table',
     weapons: [
       'Battle Axe',
@@ -183,11 +198,11 @@ Villian.prototype = Object.create(Hero.prototype);
     name: 'AirTable',
     team: 'Daily Standups',
     weapons: [
-      'Potions',
+      'Loading Icon',
       'Wand',
     ],
     language: 'Evil Laugh',
-    battleCry: "Error Loading Airtable"
+    battleCry: "\"Error Loading Airtable\""
   });
 
  
@@ -227,9 +242,9 @@ const numberGen = {
   console.log(archer.greet()); // Lilith offers a greeting in Elvish.
   console.log(mage.takeDamage()); // Bruce took damage.
   console.log(swordsman.destroy()); // Sir Mustachio was removed from the game.
-  console.log(numberGen.roll());//generates a random number for battle 
   console.log(strongHero.goToBattle());
   console.log(evilVillian.goToBattle());
+  console.log(evilVillian.battleSwing());
   
   
 
